@@ -15,7 +15,6 @@ const Home = () => {
                 </View>
                 <InformationCard 
                 name = "Hello, World" 
-                style = {styles.context}
                 />
             </SafeAreaView>
         </ScrollView>
@@ -37,11 +36,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         color: Colors.black,
     },
-    context:{
-        fontSize: 15,
-        fontWeight:"500",
-        color: Colors.White,
-    },
+    
 })
 
 export default Home;
