@@ -3,7 +3,8 @@ import {Text, StyleSheet, SafeAreaView, ScrollView, View } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import InformationCard from '../components/InformationCard';
 
-const Home = () => {
+const Home = ({ navigation }) => {
+    const navigate = () => navigation.navigate("Details")
     return (
     <View style = {styles.container}>
         <ScrollView>
@@ -15,6 +16,7 @@ const Home = () => {
                 </View>
                 <InformationCard 
                 name = "Hello, World" 
+                navigation = {navigate}
                 />
             </SafeAreaView>
         </ScrollView>

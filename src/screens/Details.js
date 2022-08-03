@@ -8,5 +8,7 @@ const Details = () => {
                 This is Details Screen
             </Text>
         </View>
-    )
+    );
 }
+
+export default Details;

@@ -5,7 +5,7 @@ import { Colors } from 'react-native/Libraries/NewAppScreen';
 const InformationCard = (props) => {
     return(
         <TouchableOpacity
-        onPress={() => props.navigate('Details')}>
+        onPress={props.navigation}>
             <SafeAreaView>
                 <View style = {styles.container}>
                     <Text style = {styles.context}>
@@ -13,7 +13,6 @@ const InformationCard = (props) => {
                     </Text>
                 </View>
             </SafeAreaView>
-            
         </TouchableOpacity>      
     );
 }
