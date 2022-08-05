@@ -4,7 +4,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './src/screens/Home';
 import Details from './src/screens/Details'
 import Add from './src/screens/Add'
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,7 +20,7 @@ const App = () => {
             backgroundColor: '#0288d1',
           },
           headerTitleStyle: {
-            color: Colors.white,
+            color: "#FFF",
             fontWeight: "bold",
           }
           }}/>
@@ -34,7 +33,7 @@ const App = () => {
             backgroundColor: '#0288d1',
           },
           headerTitleStyle: {
-            color: Colors.white,
+            color: '#FFF',
             fontWeight: "bold",
           }
           }}/>
@@ -47,7 +46,7 @@ const App = () => {
             backgroundColor: '#0288d1',
           },
           headerTitleStyle: {
-            color: Colors.white,
+            color: '#FFF',
             fontWeight: "bold",
           }
           }}/>

@@ -1,6 +1,5 @@
 import React from 'react';
 import {Text, StyleSheet, SafeAreaView, ScrollView, View } from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 import InformationCard from '../components/InformationCard';
 import AddButton from '../components/AddButton';
 
@@ -10,7 +9,7 @@ const Home = ({ navigation }) => {
     <View style = {styles.container}>
         <ScrollView>
             <SafeAreaView>
-                <View style = {styles.titleWarpper}>
+                <View style = {styles.titleWrapper}>
                     <Text style = {styles.title}>
                         Information
                     </Text>
@@ -20,7 +19,7 @@ const Home = ({ navigation }) => {
                 navigation = {navigate}
                 />
                 <AddButton 
-                navigation = {() => navigation.navigate("Details")}
+                navigation = {() => navigation.navigate("Add")}
                 />
                 
             </SafeAreaView>
@@ -33,7 +32,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#e3f2fd',
     },
-    titleWarpper: {
+    titleWrapper: {
         paddingTop: 20,
         paddingBottom: 20,
         alignItems: "center",  
@@ -41,7 +40,6 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 30,
         fontWeight: "bold",
-        color: Colors.black,
     },
 })
 

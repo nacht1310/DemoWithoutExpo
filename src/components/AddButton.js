@@ -6,7 +6,6 @@ const AddButton = (props) => {
     return(
             <TouchableOpacity
         onPress={props.navigation}
-        style = {styles.wrapper}
         >
                 <View style = {styles.container}>
                     <Text style = {styles.context}>
@@ -31,10 +30,6 @@ const styles = StyleSheet.create({
     context:{
         fontSize: 30,
     },
-    wrapper:{
-        position:'absolute',
-        bottom: 10,
-    }
 });
 
 export default AddButton;
