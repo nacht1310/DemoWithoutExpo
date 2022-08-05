@@ -1,15 +1,15 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 const InformationCard = (props) => {
+    const name = props.name;
     return(
         <TouchableOpacity
         onPress={props.navigation}>
             <SafeAreaView>
                 <View style = {styles.container}>
                     <Text style = {styles.context}>
-                        {props.name}
+                        {name}
                     </Text>
                 </View>
             </SafeAreaView>
@@ -23,16 +23,17 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         height: 40,
         width: 325,
-        backgroundColor: '#00e676',
+        backgroundColor: '#80d8ff',
         alignSelf: "center",
         borderRadius: 10,
         alignItems: "center",
         alignContent: "center",
+        flexWrap: 'wrap',
     },
     context:{
         fontSize: 15,
-        fontWeight:"500",
-        color: Colors.White,
+        fontWeight:"900",
+        color: '#FFF',
     },
 });
 

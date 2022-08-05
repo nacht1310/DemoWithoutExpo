@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './src/screens/Home';
 import Details from './src/screens/Details'
+import Add from './src/screens/Add'
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 const Stack = createNativeStackNavigator();
@@ -17,7 +18,7 @@ const App = () => {
           title: 'Home',
           headerTitleAlign: "center",
           headerStyle: {
-            backgroundColor: '#80d8ff',
+            backgroundColor: '#0288d1',
           },
           headerTitleStyle: {
             color: Colors.white,
@@ -30,7 +31,20 @@ const App = () => {
           title: 'Details',
           headerTitleAlign: "center",
           headerStyle: {
-            backgroundColor: '#80d8ff',
+            backgroundColor: '#0288d1',
+          },
+          headerTitleStyle: {
+            color: Colors.white,
+            fontWeight: "bold",
+          }
+          }}/>
+          <Stack.Screen name="Add" 
+        component={Add} 
+        options ={{
+          title: 'Add',
+          headerTitleAlign: "center",
+          headerStyle: {
+            backgroundColor: '#0288d1',
           },
           headerTitleStyle: {
             color: Colors.white,
