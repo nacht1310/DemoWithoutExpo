@@ -22,6 +22,8 @@ const Home = ({ navigation }) => {
                 navigation = {() => navigation.navigate("Add")}
                 />
                 
+
+                
             </SafeAreaView>
         </ScrollView>
     </View>
