@@ -21,7 +21,6 @@ const Home = ({ navigation }) => {
                 <AddButton 
                 navigation = {() => navigation.navigate("Add")}
                 />
-                
 
             </SafeAreaView>
         </ScrollView>
