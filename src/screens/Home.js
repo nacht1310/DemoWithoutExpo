@@ -5,7 +5,7 @@ import AddButton from '../components/AddButton';
 import { useSelector } from 'react-redux';
 
 const Home = ({ navigation }) => {
-    
+
     const informationList = useSelector((state) => state.people)
 
     return (
@@ -23,7 +23,7 @@ const Home = ({ navigation }) => {
                 return(
                     <InformationCard 
                         name = {item.name} 
-                        navigation = {() => navigation.navigate("Details", {index})}
+                        navigation = {() => navigation.navigate("Details", {i: index})}
                         index = {index}
                     />
                 )
