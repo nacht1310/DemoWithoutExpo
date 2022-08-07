@@ -4,18 +4,16 @@ import { useState } from 'react';
 import { 
     StyleSheet, 
     SafeAreaView, 
-    ScrollView, 
     View, 
     TouchableOpacity, 
     TextInput,
     Text 
 } from 'react-native';
-import InformationSection from '../components/InformationSection'
+// import InformationSection from '../components/InformationSection'
 import {useDispatch} from 'react-redux'
 import {addCardAction} from '../redux/actions.js'
 
 const Add = ({navigation }) => {
-    const navigate = () => navigation.navigate("Home")
     const dispatch = useDispatch()
 
     const addCardOnPress = () => {
@@ -80,6 +78,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#303f9f',
         width: 100,
         height: 40,
+        marginVertical: 10
     },
     button: {
         color: '#FFF',
@@ -90,10 +89,14 @@ const styles = StyleSheet.create({
         margin: 5,
         height: 40,
         borderColor: 'gray',
-        borderWidth: 1
+        borderWidth: 1,
+        width: 350,
+        alignSelf: 'center'
     },
     text: {
-        margin: 5,
+        marginLeft: 20,
+        marginBottom:10,
+        marginTop: 10,
     }
 })
 

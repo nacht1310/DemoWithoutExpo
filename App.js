@@ -1,14 +1,12 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+import {Provider} from 'react-redux';
 // SCREEN
 import Home from './src/screens/Home';
-import Details from './src/screens/Details'
-import Add from './src/screens/Add'
-
+import Details from './src/screens/Details';
+import Add from './src/screens/Add';
 import store from './src/redux/store';
-import {Provider, useDispatch, useSelector} from 'react-redux'
 
 const Stack = createNativeStackNavigator();
 
