@@ -4,7 +4,8 @@ import InformationCard from '../components/InformationCard';
 import AddButton from '../components/AddButton';
 
 const Home = ({ navigation }) => {
-    const navigate = () => navigation.navigate("Details")
+    const data = {i: 0}
+    const navigate = () => navigation.navigate("Details", data)
     return (
     <View style = {styles.container}>
         <ScrollView>
