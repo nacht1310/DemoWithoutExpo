@@ -15,11 +15,11 @@ const Home = ({ navigation }) => {
                     </Text>
                 </View>
                 <InformationCard 
-                name = "Hello, World" 
-                navigation = {navigate}
+                    name = "Hello, World" 
+                    navigation = {navigate}
                 />
                 <AddButton 
-                navigation = {() => navigation.navigate("Add")}
+                    navigation = {() => navigation.navigate("Add")}
                 />
 
             </SafeAreaView>

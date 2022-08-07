@@ -4,9 +4,9 @@ import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-na
 const AddButton = (props) => {
     const name = '+';
     return(
-            <TouchableOpacity
-        onPress={props.navigation}
-        >
+        <TouchableOpacity
+            onPress={props.navigation}>
+                
                 <View style = {styles.container}>
                     <Text style = {styles.context}>
                         {name}
