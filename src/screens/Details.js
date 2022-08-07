@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 
 import { 
     StyleSheet, 
@@ -7,18 +8,33 @@ import {
     TextInput,
     Text 
 } from 'react-native';
-import { useSelector } from 'react-redux';
+
+import { useSelector, useDispatch } from 'react-redux';
+import {editCardAction} from '../redux/actions.js'
 
 
 const Details = ({route, navigation}) => {
     const iPerson = route.params.i 
     const info = useSelector((state) => state.people[iPerson])
 
-    console.log(info)
+    const dispatch = useDispatch()
 
+    const editCardOnPress = () => {
+        dispatch(editCardAction(
+            iPerson, 
+            {name: inputName, phone: inputPhone, email: inputEmail}
+        ))
+  
+        navigation.navigate('Home')
+    }
+
+    const [inputName, setName] = useState(info.name)
+    const [inputPhone, setPhone] = useState(info.phone)
+    const [inputEmail, setEmail] = useState(info.email)
+    
     return(
         <View>
-            {/* <Text style={styles.text}>Name</Text>
+            <Text style={styles.text}>Name</Text>
             <TextInput style={styles.input} 
                 defaultValue = {info.name}
                 onChangeText={newText => setName(newText)}/>
@@ -31,16 +47,16 @@ const Details = ({route, navigation}) => {
             <Text style={styles.text}>Email</Text>
             <TextInput style={styles.input}
                 defaultValue = {info.email}
-                onChangeText={newText => setEmail(newText)}/> */}
+                onChangeText={newText => setEmail(newText)}/>
             
 
-            {/* <TouchableOpacity onPress={addCardOnPress}>
+            <TouchableOpacity onPress={editCardOnPress}>
                 <View style = {styles.buttonWrapper}>
                     <Text style = {styles.button}>
                         Save changes
                     </Text>
                 </View>
-            </TouchableOpacity>      */}
+            </TouchableOpacity>     
         </View>
     )
 }
@@ -56,7 +72,7 @@ const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent:'center',
         backgroundColor: '#303f9f',
-        width: 100,
+        width: 200,
         height: 40,
     },
     button: {
