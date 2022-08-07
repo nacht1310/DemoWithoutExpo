@@ -12,7 +12,14 @@ const rootReducer = (state = initState, action) => {
                     ...state.people,
                     action.payload
                 ]
-            }
+            };
+        case 'deleteCard':
+            let newList = state.people;
+            newList = newList.filter((item, i) => i != action.atIndex);
+            return{
+                ...state,
+                people: newList
+            };
         
         default:
             return state

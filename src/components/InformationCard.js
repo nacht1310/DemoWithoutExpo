@@ -1,24 +1,35 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native';
+import { useDispatch } from 'react-redux';
+import {deleteCardAction} from '../redux/actions'
 
 const InformationCard = (props) => {
-    const name = props.name;
-    return(
-        <TouchableOpacity
-        onPress={props.navigation}>
-            <SafeAreaView>
-                <View style = {styles.container}>
-                    <Text style = {styles.context}>
-                        {name}
-                    </Text>
-                </View>
-            </SafeAreaView>
-        </TouchableOpacity>      
-    );
+const dispatch = useDispatch();
+const deleteCard = () => {
+    dispatch(deleteCardAction(props.index))
+}
+        return(
+            <TouchableOpacity
+            onPress={props.navigation}>
+                <SafeAreaView>
+                    <View style = {styles.infoContainer}>
+                        <Text style = {styles.infoContext}>
+                            {props.name}
+                        </Text>
+                        <TouchableOpacity onPress={deleteCard}>
+                            <Text style = {styles.infoContext}>
+                                Del
+                             </Text>
+                        </TouchableOpacity> 
+                    </View>
+                </SafeAreaView>
+            </TouchableOpacity>                 
+        );
+
 }
 
 const styles = StyleSheet.create({
-    container:{
+    infoContainer:{
         paddingTop: 8,
         marginBottom: 20,
         height: 40,
@@ -26,14 +37,15 @@ const styles = StyleSheet.create({
         backgroundColor: '#80d8ff',
         alignSelf: "center",
         borderRadius: 10,
-        alignItems: "center",
-        alignContent: "center",
         flexWrap: 'wrap',
+        flexDirection:'row',
+        justifyContent: 'space-between',
     },
-    context:{
+    infoContext:{
         fontSize: 15,
         fontWeight:"900",
         color: '#FFF',
+        marginHorizontal: 20,
     },
 });
 
