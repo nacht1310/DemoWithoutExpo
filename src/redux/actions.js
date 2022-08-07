@@ -4,3 +4,9 @@ export const addCardAction = (data) => {
         payload: data
     }
 }
+export const deleteCardAction = (index) => {
+    return {
+        type: 'deleteCard',
+        atIndex: index,
+    }
+}

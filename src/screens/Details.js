@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { 
     StyleSheet, 
     View, 
@@ -13,9 +14,11 @@ const Details = ({route, navigation}) => {
     const iPerson = route.params.i 
     const info = useSelector((state) => state.people[iPerson])
 
+    console.log(info)
+
     return(
         <View>
-            <Text style={styles.text}>Name</Text>
+            {/* <Text style={styles.text}>Name</Text>
             <TextInput style={styles.input} 
                 defaultValue = {info.name}
                 onChangeText={newText => setName(newText)}/>
@@ -28,7 +31,7 @@ const Details = ({route, navigation}) => {
             <Text style={styles.text}>Email</Text>
             <TextInput style={styles.input}
                 defaultValue = {info.email}
-                onChangeText={newText => setEmail(newText)}/>
+                onChangeText={newText => setEmail(newText)}/> */}
             
 
             {/* <TouchableOpacity onPress={addCardOnPress}>
@@ -39,7 +42,7 @@ const Details = ({route, navigation}) => {
                 </View>
             </TouchableOpacity>      */}
         </View>
-    );
+    )
 }
 
 const styles = StyleSheet.create({
