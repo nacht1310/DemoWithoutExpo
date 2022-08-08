@@ -20,6 +20,7 @@ const Home = ({ navigation }) => {
             <FlatList 
             data = {informationList}
             renderItem = {({item, index}) => {
+                console.log(item)
                 return(
                     <InformationCard 
                         name = {item.name} 

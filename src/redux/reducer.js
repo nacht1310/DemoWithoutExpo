@@ -5,7 +5,7 @@ const initState = {
 }
 const rootReducer = (state = initState, action) => {
     switch(action.type){
-        case 'addCard':
+        case 'addCard':{
             return{
                 ...state,
                 people: [
@@ -13,7 +13,7 @@ const rootReducer = (state = initState, action) => {
                     action.payload
                 ]
             };
-            
+        } 
         case 'deleteCard':{
             let newList = state.people;
             newList = newList.filter((item, i) => i != action.atIndex);
@@ -25,7 +25,6 @@ const rootReducer = (state = initState, action) => {
         case 'editCard':{
             let newList = state.people;
             newList[action.atIndex] = action.payload
-            console.log(newList[action.atIndex])
             return{
                 ...state,
                 people: newList
