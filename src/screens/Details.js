@@ -16,7 +16,6 @@ import {editCardAction} from '../redux/actions.js'
 const Details = ({route, navigation}) => {
     const iPerson = route.params.i 
     const info = useSelector((state) => state.people[iPerson])
-
     const dispatch = useDispatch()
 
     const editCardOnPress = () => {
@@ -24,10 +23,10 @@ const Details = ({route, navigation}) => {
             iPerson, 
             {name: inputName, phone: inputPhone, email: inputEmail}
         ))
-  
-        navigation.navigate('Home')
+        setIsRender(!isRender)
+        navigation.navigate('Home', {isRender: isRender})
     }
-
+    const [isRender, setIsRender] = useState(false);
     const [inputName, setName] = useState(info.name)
     const [inputPhone, setPhone] = useState(info.phone)
     const [inputEmail, setEmail] = useState(info.email)
