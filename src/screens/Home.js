@@ -4,10 +4,10 @@ import InformationCard from '../components/InformationCard';
 import AddButton from '../components/AddButton';
 import { useSelector } from 'react-redux';
 
-const Home = ({ navigation }) => {
+const Home = ({  navigation, route }) => {
 
     const informationList = useSelector((state) => state.people)
-
+    const isRender = route.params?.isRender
     return (
     <View style = {styles.container}>
         <SafeAreaView>
@@ -18,8 +18,10 @@ const Home = ({ navigation }) => {
             </View>
            
             <FlatList 
+            extraData={isRender}
             data = {informationList}
             renderItem = {({item, index}) => {
+                console.log(item)
                 return(
                     <InformationCard 
                         name = {item.name} 

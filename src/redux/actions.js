@@ -10,3 +10,11 @@ export const deleteCardAction = (index) => {
         atIndex: index,
     }
 }
+
+export const editCardAction = (index, data) => {
+    return {
+        type: 'editCard',
+        atIndex: index,
+        payload: data,
+    }
+}
