@@ -4,19 +4,19 @@ import { View, Text, StyleSheet, TextInput } from 'react-native';
 const InformationSection = (props) => {
     return(
        
-            <View>
-                <View style = {styles.titleWrapper}>
-                    <Text style = {styles.context}>
-                        {props.title}
-                    </Text>
-                </View>
-                <View style = {styles.titleWrapper}>
-                    <TextInput 
-                    style={styles.input}
-                    placeholder = {props.placeholder}
-                    />
-                </View>
-            </View>   
+        <View>
+            <View style = {styles.titleWrapper}>
+                <Text style = {styles.context}>
+                    {props.title}
+                </Text>
+            </View>
+            <View style = {styles.titleWrapper}>
+                <TextInput 
+                style={styles.input}
+                placeholder = {props.placeholder}
+                />
+            </View>
+        </View>   
     );
 }
 
