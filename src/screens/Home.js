@@ -1,29 +1,40 @@
 import React from 'react';
-import {Text, StyleSheet, SafeAreaView, ScrollView, View } from 'react-native';
+import {Text, StyleSheet, SafeAreaView, View, FlatList } from 'react-native';
 import InformationCard from '../components/InformationCard';
 import AddButton from '../components/AddButton';
+import { useSelector } from 'react-redux';
 
-const Home = ({ navigation }) => {
-    const navigate = () => navigation.navigate("Details")
+const Home = ({  navigation, route }) => {
+
+    const informationList = useSelector((state) => state.people)
+    const isRender = route.params?.isRender
     return (
     <View style = {styles.container}>
-        <ScrollView>
-            <SafeAreaView>
-                <View style = {styles.titleWrapper}>
-                    <Text style = {styles.title}>
-                        Information
-                    </Text>
-                </View>
-                <InformationCard 
-                name = "Hello, World" 
-                navigation = {navigate}
-                />
-                <AddButton 
-                navigation = {() => navigation.navigate("Add")}
-                />
-                
-            </SafeAreaView>
-        </ScrollView>
+        <SafeAreaView>
+            <View style = {styles.titleWrapper}>
+                <Text style = {styles.title}>
+                    Information
+                </Text>
+            </View>
+           
+            <FlatList 
+            extraData={isRender}
+            data = {informationList}
+            renderItem = {({item, index}) => {
+                console.log(item)
+                return(
+                    <InformationCard 
+                        name = {item.name} 
+                        navigation = {() => navigation.navigate("Details", {i: index})}
+                        index = {index}
+                    />
+                )
+            }} />
+
+            <AddButton 
+            navigation = {() => navigation.navigate("Add")}
+            />
+        </SafeAreaView>
     </View>
     );
 }
