@@ -1,13 +1,13 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 const AddButton = (props) => {
     const name = '+';
     return(
         <TouchableOpacity
-            onPress={props.navigation}>
-                
-                <View style = {styles.container}>
+            onPress={props.navigation}
+            style = {styles.container}>
+                <View>
                     <Text style = {styles.context}>
                         {name}
                     </Text>
@@ -23,12 +23,13 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         justifyContent: 'center',
         alignItems: 'center',
-        borderWidth: 1,
         alignSelf:'center',
         backgroundColor: '#26c6da',
+        bottom: 15,
     },
     context:{
         fontSize: 30,
+        color: '#FFF'
     },
 });
 
