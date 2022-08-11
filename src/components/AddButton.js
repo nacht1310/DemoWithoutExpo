@@ -1,34 +1,37 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 const AddButton = (props) => {
     const name = '+';
     return(
         <TouchableOpacity
-            onPress={props.navigation}>
+            onPress={props.navigation}
+            style = {styles.container}>
                 
-                <View style = {styles.container}>
+                <View>
                     <Text style = {styles.context}>
                         {name}
                     </Text>
                 </View>
+
         </TouchableOpacity>           
     );
 }
 
 const styles = StyleSheet.create({
     container:{
-        width: 50,
+        width:50,
         height:50,
         borderRadius: 50,
         justifyContent: 'center',
         alignItems: 'center',
-        borderWidth: 1,
         alignSelf:'center',
         backgroundColor: '#26c6da',
+        bottom: 10
     },
     context:{
         fontSize: 30,
+        color: '#FFF'
     },
 });
 

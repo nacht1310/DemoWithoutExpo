@@ -14,11 +14,11 @@ const Details = ({route, navigation}) => {
     const iPerson = route.params.i 
     const info = useSelector((state) => state.people[iPerson])
 
-    console.log(info)
 
     return(
-        <View>
-            {/* <Text style={styles.text}>Name</Text>
+
+        <View style = {styles.container}>
+            <Text style={styles.text}>Name</Text>
             <TextInput style={styles.input} 
                 defaultValue = {info.name}
                 onChangeText={newText => setName(newText)}/>
@@ -31,16 +31,16 @@ const Details = ({route, navigation}) => {
             <Text style={styles.text}>Email</Text>
             <TextInput style={styles.input}
                 defaultValue = {info.email}
-                onChangeText={newText => setEmail(newText)}/> */}
+                onChangeText={newText => setEmail(newText)}/> 
             
 
-            {/* <TouchableOpacity onPress={addCardOnPress}>
+            <TouchableOpacity onPress={addCardOnPress}>
                 <View style = {styles.buttonWrapper}>
                     <Text style = {styles.button}>
                         Save changes
                     </Text>
                 </View>
-            </TouchableOpacity>      */}
+            </TouchableOpacity>      
         </View>
     )
 }
@@ -68,10 +68,14 @@ const styles = StyleSheet.create({
         margin: 5,
         height: 40,
         borderColor: 'gray',
-        borderWidth: 1
+        borderWidth: 1,
+        width: 350,
+        alignSelf: 'center'
     },
     text: {
-        margin: 5,
+        marginLeft: 20,
+        marginBottom:10,
+        marginTop: 10,
     }
 })
 

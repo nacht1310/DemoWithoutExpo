@@ -7,10 +7,10 @@ import { useSelector } from 'react-redux';
 const Home = ({ navigation }) => {
 
     const informationList = useSelector((state) => state.people)
+    const isRender = route.params?.isRender
 
     return (
-    <View style = {styles.container}>
-        <SafeAreaView>
+        <SafeAreaView style = {styles.container}>
             <View style = {styles.titleWrapper}>
                 <Text style = {styles.title}>
                     Information
@@ -18,6 +18,7 @@ const Home = ({ navigation }) => {
             </View>
            
             <FlatList 
+            extraData={isRender}
             data = {informationList}
             renderItem = {({item, index}) => {
                 return(
@@ -33,7 +34,6 @@ const Home = ({ navigation }) => {
             navigation = {() => navigation.navigate("Add")}
             />
         </SafeAreaView>
-    </View>
     );
 }
 const styles = StyleSheet.create({
