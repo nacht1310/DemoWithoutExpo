@@ -9,8 +9,7 @@ const Home = ({  navigation, route }) => {
     const informationList = useSelector((state) => state.people)
     const isRender = route.params?.isRender
     return (
-    <View style = {styles.container}>
-        <SafeAreaView>
+        <SafeAreaView style = {styles.container}>
             <View style = {styles.titleWrapper}>
                 <Text style = {styles.title}>
                     Information
@@ -35,7 +34,6 @@ const Home = ({  navigation, route }) => {
             navigation = {() => navigation.navigate("Add")}
             />
         </SafeAreaView>
-    </View>
     );
 }
 const styles = StyleSheet.create({

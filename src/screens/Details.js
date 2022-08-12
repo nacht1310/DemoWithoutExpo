@@ -83,10 +83,14 @@ const styles = StyleSheet.create({
         margin: 5,
         height: 40,
         borderColor: 'gray',
-        borderWidth: 1
+        borderWidth: 1,
+        width: 350,
+        alignSelf: 'center'
     },
     text: {
-        margin: 5,
+        marginLeft: 20,
+        marginBottom:10,
+        marginTop: 10,
     }
 })
 
