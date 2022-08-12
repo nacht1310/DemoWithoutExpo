@@ -17,10 +17,10 @@ const Home = ({  navigation, route }) => {
             </View>
            
             <FlatList 
+            keyExtractor={(item) => item.name}
             extraData={isRender}
             data = {informationList}
             renderItem = {({item, index}) => {
-                console.log(item)
                 return(
                     <InformationCard 
                         name = {item.name} 
