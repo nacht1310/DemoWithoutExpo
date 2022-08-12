@@ -33,11 +33,6 @@ const Add = ({navigation }) => {
     return (
     <View style = {styles.container}>
         <SafeAreaView>
-
-            {/* <InformationSection title = 'Name' placeholder = "Enter your name"/>
-            <InformationSection title = 'Email' placeholder = "Enter your Email"/> 
-            <InformationSection title = 'Phone Number' placeholder = "Enter your phone number"/>  
-            */}
             
             <Text style={styles.text}>Enter your name</Text>
             <TextInput style={styles.input} 
