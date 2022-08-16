@@ -1,41 +1,43 @@
 import React from 'react';
 import { View, Text, StyleSheet, TextInput } from 'react-native';
 
-const InformationSection = (props) => {
+const InformationSection = ( {
+    label,
+    error,
+    ...props
+}) => {
     return(
        
         <View>
-            <View style = {styles.titleWrapper}>
-                <Text style = {styles.context}>
-                    {props.title}
+                <Text style = {styles.text}>
+                    {label}
                 </Text>
-            </View>
-            <View style = {styles.titleWrapper}>
                 <TextInput 
-                style={styles.input}
-                placeholder = {props.placeholder}
+                style={[styles.input, {borderColor: error ? '#ff1744' : 'gray',}]}
+                {...props}
                 />
-            </View>
+                {error && (
+                <Text style = {[{color: '#ff1744', fontWeight: "bold", marginTop: 0, marginBottom: 0},styles.text]}>
+                {error}
+                </Text>
+                )}
         </View>   
     );
 }
 
 const styles = StyleSheet.create({
-    titleWrapper: {
-        paddingTop: 10,
-        paddingBottom: 10,
-        alignItems: "center",  
-    },
-    context: {
-        fontSize: 20,
-        fontWeight: "bold",
-        color: '#000',
+    text: {
+        marginLeft: 22,
+        marginBottom:10,
+        marginTop: 10,
     },
     input:{
+        margin: 5,
+        height: 40,
         borderWidth: 1,
         width: 350,
-        marginBottom: 10,
-    }
+        alignSelf: 'center'
+    },
 });
 
 export default InformationSection;

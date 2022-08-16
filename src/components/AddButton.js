@@ -6,7 +6,8 @@ const AddButton = (props) => {
     return(
         <TouchableOpacity
             onPress={props.navigation}
-            style = {styles.container}>
+            style = {styles.container}
+            activeOpacity = {0.7}>
                 <View>
                     <Text style = {styles.context}>
                         {name}

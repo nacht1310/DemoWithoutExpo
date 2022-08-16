@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         flexWrap: 'wrap',
         flexDirection:'row',
-        justifyContent: 'space-between',
+        justifyContent: 'space-between', 
     },
     infoContext:{
         fontSize: 15,

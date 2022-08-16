@@ -23,7 +23,7 @@ const rootReducer = (state = initState, action) => {
             };
         }
         case 'editCard':{
-            let newList = state.people;
+            let newList = [...state.people];
             newList[action.atIndex] = action.payload
             return{
                 ...state,

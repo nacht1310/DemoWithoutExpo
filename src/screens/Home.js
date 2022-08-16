@@ -4,10 +4,9 @@ import InformationCard from '../components/InformationCard';
 import AddButton from '../components/AddButton';
 import { useSelector } from 'react-redux';
 
-const Home = ({  navigation, route }) => {
+const Home = ({ navigation }) => {
 
     const informationList = useSelector((state) => state.people)
-    const isRender = route.params?.isRender
     return (
         <SafeAreaView style = {styles.container}>
             <View style = {styles.titleWrapper}>
@@ -17,21 +16,20 @@ const Home = ({  navigation, route }) => {
             </View>
            
             <FlatList 
-            keyExtractor={(item) => item.name}
-            extraData={isRender}
+            extraData={informationList}
             data = {informationList}
             renderItem = {({item, index}) => {
                 return(
                     <InformationCard 
                         name = {item.name} 
-                        navigation = {() => navigation.navigate("Details", {i: index})}
+                        navigation = {() => navigation.navigate("Modify", {isAdd: false, i: index})}
                         index = {index}
                     />
                 )
             }} />
 
             <AddButton 
-            navigation = {() => navigation.navigate("Add")}
+            navigation = {() => navigation.navigate("Modify", {isAdd: true})}
             />
         </SafeAreaView>
     );
