@@ -22,14 +22,14 @@ const Home = ({ navigation }) => {
                 return(
                     <InformationCard 
                         name = {item.name} 
-                        navigation = {() => navigation.navigate("Details", {i: index})}
+                        navigation = {() => navigation.navigate("Modify", {isAdd: false, i: index})}
                         index = {index}
                     />
                 )
             }} />
 
             <AddButton 
-            navigation = {() => navigation.navigate("Add")}
+            navigation = {() => navigation.navigate("Modify", {isAdd: true})}
             />
         </SafeAreaView>
     );

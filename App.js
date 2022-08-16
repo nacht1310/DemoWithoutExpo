@@ -4,8 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {Provider} from 'react-redux';
 // SCREEN
 import Home from './src/screens/Home';
-import Details from './src/screens/Details';
-import Add from './src/screens/Add';
+import Modify from './src/screens/Modify';
 import {store, persistor} from './src/redux/store';
 
 import { PersistGate } from 'redux-persist/integration/react'
@@ -31,10 +30,10 @@ const App = () => {
                   fontWeight: "bold",
                 }
               }}/>
-            <Stack.Screen name="Details" 
-              component={Details} 
+              <Stack.Screen name="Modify" 
+              component={Modify} 
               options ={{
-                title: 'Details',
+                title: 'Modify',
                 headerTitleAlign: "center",
                 headerStyle: {
                   backgroundColor: '#0288d1',
@@ -43,20 +42,8 @@ const App = () => {
                   color: '#FFF',
                   fontWeight: "bold",
                 }
-              }}/>
-            <Stack.Screen name="Add" 
-              component={Add} 
-              options ={{
-                title: 'Add',
-                headerTitleAlign: "center",
-                headerStyle: {
-                  backgroundColor: '#0288d1',
-                },
-                headerTitleStyle: {
-                  color: '#FFF',
-                  fontWeight: "bold",
-                }
-              }}/>
+              }}
+              />
           </Stack.Navigator>
         </NavigationContainer>
       

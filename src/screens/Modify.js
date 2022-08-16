@@ -10,17 +10,22 @@ import {
 
 import { useSelector, useDispatch } from 'react-redux';
 import {editCardAction} from '../redux/actions.js'
+import {addCardAction} from '../redux/actions.js'
 
 import InformationSection from '../components/InformationSection.js';
 
-const Details = ({route, navigation}) => {
+const Modify = ({route, navigation}) => {
     const iPerson = route.params.i 
+    const isAdd = route.params.isAdd
+
+    const buttonName = (isAdd ? 'Submit' : 'Save changes')
     const info = useSelector((state) => state.people[iPerson])
+
     const dispatch = useDispatch()
     const handleError = (text, input) => {
         setError(previousState => ({...previousState, [input]: text}))
     }
-    const editCardOnPress = () => {
+    const changeCardOnPress = () => {
         let valid = true
         if(!inputName) {
             handleError('Please input your name', 'name')
@@ -51,47 +56,57 @@ const Details = ({route, navigation}) => {
             valid = true
         }
         if(valid === true) {
-            dispatch(editCardAction(iPerson,
-                {
-                name: inputName,
-                phone: inputPhone,
-                email: inputEmail
-              }))
+            if(isAdd){
+                dispatch(addCardAction({
+                    name: inputName,
+                    phone: inputPhone,
+                    email: inputEmail
+                  }))
+                navigation.navigate('Home')
+            }
+            else{
+                dispatch(editCardAction(iPerson,
+                    {
+                    name: inputName,
+                    phone: inputPhone,
+                    email: inputEmail
+                  }))
+            }
             navigation.navigate('Home')
         }
 }
-    const [inputName, setName] = useState(info.name)
-    const [inputPhone, setPhone] = useState(info.phone)
-    const [inputEmail, setEmail] = useState(info.email)
+    const [inputName, setName] = useState((isAdd ? '' : info.name))
+    const [inputPhone, setPhone] = useState((isAdd ? '' : info.phone))
+    const [inputEmail, setEmail] = useState((isAdd ? '' : info.email))
     const [errorMsg, setError] = useState({})
 
     return(
         <View>
-            <InformationSection label = "Name" 
-            defaultValue = {info.name}
+            <InformationSection label ={(isAdd ? "Enter your name" : "Name")} 
+            defaultValue = {(isAdd ? "" : info.name)}
             onChangeText={newText => setName(newText)}
             autoCapitalize = "words" 
             error={errorMsg.name}
             />
 
-            <InformationSection label = "Phone Number" 
-            defaultValue = {info.phone}
+            <InformationSection label = {(isAdd ? "Enter your phone number" :"Phone Number" )}
+            defaultValue = {(isAdd ? "" : info.phone)}
             onChangeText={newText => setPhone(newText)}
             keyboardType="numeric" 
             error={errorMsg.phone}
             />
 
-            <InformationSection label = "Email" 
-            defaultValue = {info.email}
+            <InformationSection label = {(isAdd ? "Enter your email" :"Email" )}
+            defaultValue = {(isAdd ? "" : info.email)}
             onChangeText={newText => setEmail(newText)} 
             error = {errorMsg.email}
             />
 
-            <TouchableOpacity onPress={editCardOnPress}
+            <TouchableOpacity onPress={changeCardOnPress}
                 style = {styles.buttonWrapper}
                 activeOpacity = {0.7}>
                     <Text style = {styles.button}>
-                        Save changes
+                        {buttonName}
                     </Text>
             </TouchableOpacity>     
         </View>
@@ -133,5 +148,5 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Details;
+export default Modify;
 
