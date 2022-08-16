@@ -5,56 +5,94 @@ import {
     StyleSheet, 
     View, 
     TouchableOpacity, 
-    TextInput,
     Text 
 } from 'react-native';
 
 import { useSelector, useDispatch } from 'react-redux';
 import {editCardAction} from '../redux/actions.js'
 
+import InformationSection from '../components/InformationSection.js';
 
 const Details = ({route, navigation}) => {
     const iPerson = route.params.i 
     const info = useSelector((state) => state.people[iPerson])
     const dispatch = useDispatch()
-
-    const editCardOnPress = () => {
-        dispatch(editCardAction(
-            iPerson, 
-            {name: inputName, phone: inputPhone, email: inputEmail}
-        ))
-        setIsRender(!isRender)
-        navigation.navigate('Home', {isRender: isRender})
+    const handleError = (text, input) => {
+        setError(previousState => ({...previousState, [input]: text}))
     }
-    const [isRender, setIsRender] = useState(false);
+    const editCardOnPress = () => {
+        let valid = true
+        if(!inputName) {
+            handleError('Please input your name', 'name')
+            valid = false
+        }
+        else {
+            handleError('', 'name')
+            valid = true
+        }
+        if(!inputPhone) {
+            handleError('Please input your phone number', 'phone')
+            valid = false
+        }
+        else {
+            handleError('', 'phone')
+            valid = true
+        }
+        if(!inputEmail) {
+            handleError('Please input your email', 'email')
+            valid = false
+        }
+        else if(!inputEmail.match(/\S+@\S+\.\S+/)){
+            handleError('Please input valid email', 'email')
+            valid = false
+        }
+        else {
+            handleError('', 'email')
+            valid = true
+        }
+        if(valid === true) {
+            dispatch(editCardAction(iPerson,
+                {
+                name: inputName,
+                phone: inputPhone,
+                email: inputEmail
+              }))
+            navigation.navigate('Home')
+        }
+}
     const [inputName, setName] = useState(info.name)
     const [inputPhone, setPhone] = useState(info.phone)
     const [inputEmail, setEmail] = useState(info.email)
-    
+    const [errorMsg, setError] = useState({})
+
     return(
         <View>
-            <Text style={styles.text}>Name</Text>
-            <TextInput style={styles.input} 
-                defaultValue = {info.name}
-                onChangeText={newText => setName(newText)}/>
-            
-            <Text style={styles.text}>Phone number</Text>
-            <TextInput style={styles.input}
-                defaultValue = {info.phone}
-                onChangeText={newText => setPhone(newText)}/>
-            
-            <Text style={styles.text}>Email</Text>
-            <TextInput style={styles.input}
-                defaultValue = {info.email}
-                onChangeText={newText => setEmail(newText)}/>
-            
+            <InformationSection label = "Name" 
+            defaultValue = {info.name}
+            onChangeText={newText => setName(newText)}
+            autoCapitalize = "words" 
+            error={errorMsg.name}
+            />
 
-            <TouchableOpacity onPress={editCardOnPress}>
-                <View style = {styles.buttonWrapper}>
+            <InformationSection label = "Phone Number" 
+            defaultValue = {info.phone}
+            onChangeText={newText => setPhone(newText)}
+            keyboardType="numeric" 
+            error={errorMsg.phone}
+            />
+
+            <InformationSection label = "Email" 
+            defaultValue = {info.email}
+            onChangeText={newText => setEmail(newText)} 
+            error = {errorMsg.email}
+            />
+
+            <TouchableOpacity onPress={editCardOnPress}
+                style = {styles.buttonWrapper}
+                activeOpacity = {0.7}>
                     <Text style = {styles.button}>
                         Save changes
                     </Text>
-                </View>
             </TouchableOpacity>     
         </View>
     )

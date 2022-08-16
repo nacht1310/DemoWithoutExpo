@@ -6,53 +6,91 @@ import {
     SafeAreaView, 
     View, 
     TouchableOpacity, 
-    TextInput,
     Text 
 } from 'react-native';
 // import InformationSection from '../components/InformationSection'
 import {useDispatch} from 'react-redux'
 import {addCardAction} from '../redux/actions.js'
+import InformationSection from '../components/InformationSection.js';
 
 const Add = ({navigation }) => {
     const dispatch = useDispatch()
-
+    const handleError = (text, input) => {
+        setError(previousState => ({...previousState, [input]: text}))
+    }
     const addCardOnPress = () => {
-        dispatch(addCardAction({
-          name: inputName,
-          phone: inputPhone,
-          email: inputEmail
-        }))
-  
-        navigation.navigate('Home')
+        let valid = true
+        if(!inputName) {
+            handleError('Please input your name', 'name')
+            console.log(errorMsg)
+            valid = false
+        }
+        else {
+            handleError('', 'name')
+            valid = true
+        }
+        if(!inputPhone) {
+            handleError('Please input your phone number', 'phone')
+            console.log(errorMsg)
+            valid = false
+        }
+        else {
+            handleError('', 'phone')
+            valid = true
+        }
+        if(!inputEmail) {
+            handleError('Please input your email', 'email')
+            console.log(errorMsg)
+            valid = false
+        }
+        else if(!inputEmail.match(/\S+@\S+\.\S+/)){
+            handleError('Please input valid email', 'email')
+            valid = false
+        }
+        else {
+            handleError('', 'email')
+            valid = true
+        }
+        if(valid === true) {
+            dispatch(addCardAction({
+                name: inputName,
+                phone: inputPhone,
+                email: inputEmail
+              }))
+            navigation.navigate('Home')
+        }
+        
     }
 
     const [inputName, setName] = useState('')
     const [inputPhone, setPhone] = useState('')
     const [inputEmail, setEmail] = useState('')
+    const [errorMsg, setError] = useState({})
 
     return (
     <View style = {styles.container}>
         <SafeAreaView>
             
-            <Text style={styles.text}>Enter your name</Text>
-            <TextInput style={styles.input} 
-                onChangeText={newText => setName(newText)}/>
+            <InformationSection label = "Enter your name" 
+            onChangeText={newText => setName(newText)}
+            autoCapitalize = "words" 
+            error={errorMsg.name}/>
             
-            <Text style={styles.text}>Enter your phone number</Text>
-            <TextInput style={styles.input}
-                onChangeText={newText => setPhone(newText)}/>
-            
-            <Text style={styles.text}>Enter your email</Text>
-            <TextInput style={styles.input}
-                onChangeText={newText => setEmail(newText)}/>
-            
+            <InformationSection label = "Enter your phone number" 
+            onChangeText={newText => setPhone(newText)}
+            keyboardType = "numeric" 
+            error={errorMsg.phone}/>
 
-            <TouchableOpacity onPress={addCardOnPress}>
-                <View style = {styles.buttonWrapper}>
+            <InformationSection label = "Enter your email" 
+            onChangeText={newText => setEmail(newText)} 
+            error={errorMsg.email}/>                    
+
+            <TouchableOpacity onPress={addCardOnPress}
+                style = {styles.buttonWrapper}
+                activeOpacity = {0.7}>
                     <Text style = {styles.button}>
                         Submit
                     </Text>
-                </View>
             </TouchableOpacity>     
 
             
